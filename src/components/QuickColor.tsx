@@ -27,7 +27,22 @@ export function QuickColor({ api }: Props) {
     setLoading(true);
     setError(null);
 
-    api.viewer.getObjects().then(allModelObjects => {
+    api.viewer.getObjects().then(async modelObjects => {
+      if (cancelled) return;
+
+      // Real SDK returns objects without property sets — fetch them per model.
+      const allModelObjects = await Promise.all(
+        modelObjects.map(async ({ modelId, objects }) => {
+          const hasProps = objects.some(o => o.properties && o.properties.length > 0);
+          if (hasProps) return { modelId, objects };
+          const withProps = await api.viewer.getObjectProperties(
+            modelId,
+            objects.map(o => o.id),
+          );
+          return { modelId, objects: withProps };
+        }),
+      );
+
       if (cancelled) return;
       allModelObjectsRef.current = allModelObjects;
 
