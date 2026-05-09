@@ -1,0 +1,361 @@
+/* =============================================================================
+   Modus Design System — Colors & Type
+   Extracted from trimble-oss/modus-wc-2.0 (Stencil + Tailwind + DaisyUI)
+   ----------------------------------------------------------------------------
+   Two things live here:
+     1. Low-level design tokens (raw hex colors, type ramps, spacing, radii)
+     2. Semantic tokens used by themes and component classes
+   All variables are prefixed `--modus-wc-*` to match the component library.
+   ========================================================================== */
+
+/* ---------- Fonts (self-hosted Open Sans variable) ------------------------- */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url('fonts/OpenSans-VariableFont.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url('fonts/OpenSans-Italic-VariableFont.woff2') format('woff2');
+}
+
+/* ---------- Modus Icons (CDN webfont, matches real library) --------------- */
+@font-face {
+  font-family: 'modus-icons-outlined';
+  src: url('https://cdn.jsdelivr.net/npm/@trimble-oss/modus-icons@1/dist/modus-outlined/fonts/modus-icons.woff2') format('woff2');
+  font-style: normal; font-weight: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'modus-icons-solid';
+  src: url('https://cdn.jsdelivr.net/npm/@trimble-oss/modus-icons@1/dist/modus-solid/fonts/modus-icons.woff2') format('woff2');
+  font-style: normal; font-weight: normal; font-display: swap;
+}
+.modus-icons, .modus-icons-outlined { font-family: 'modus-icons-outlined'; font-style: normal; font-weight: normal; -webkit-font-smoothing: antialiased; }
+.modus-icons-solid { font-family: 'modus-icons-solid'; font-style: normal; font-weight: normal; -webkit-font-smoothing: antialiased; }
+
+/* =========================================================================
+   1. RAW TOKENS — direct hex values (matches modus-wc variables.css)
+   ========================================================================= */
+:root {
+  color-scheme: light dark;
+
+  /* Neutral progression */
+  --modus-wc-color-white:        #ffffff;
+  --modus-wc-color-gray-light:   #f1f1f6;
+  --modus-wc-color-gray-01:      #f5f5f8;
+  --modus-wc-color-gray-02:      #e9eaf0;
+  --modus-wc-color-gray-0:       #e0e1e9;
+  --modus-wc-color-gray-1:       #cbcdd6;
+  --modus-wc-color-gray-2:       #b7b9c3;
+  --modus-wc-color-gray-3:       #a3a6b1;
+  --modus-wc-color-gray-4:       #90939f;
+  --modus-wc-color-gray-5:       #7d808d;
+  --modus-wc-color-gray-6:       #6a6e79;
+  --modus-wc-color-gray-7:       #585c65;
+  --modus-wc-color-gray-8:       #464b52;
+  --modus-wc-color-gray-9:       #353a40;
+  --modus-wc-color-gray-10:      #171c1e;
+  --modus-wc-color-trimble-gray: #252a2e;
+  --modus-wc-color-black:        #000000;
+
+  /* Blue progression (primary brand family) */
+  --modus-wc-color-blue-pale:       #dcedf9;
+  --modus-wc-color-highlight-blue:  #019aeb;
+  --modus-wc-color-blue-light:      #217cbb;
+  --modus-wc-color-trimble-blue:    #0063a3;   /* THE brand blue */
+  --modus-wc-color-blue-dark:       #0e416c;
+  --modus-wc-color-info-blue:       #004f83;
+
+  /* Yellow progression (warn/secondary) */
+  --modus-wc-color-yellow-pale:  #fff5e4;
+  --modus-wc-color-yellow-light: #fec157;
+  --modus-wc-color-yellow:       #fbad26;
+  --modus-wc-color-yellow-dark:  #e49325;
+
+  /* Red progression (error) */
+  --modus-wc-color-red-pale:  #fbd4d7;
+  --modus-wc-color-red-light: #e86363;
+  --modus-wc-color-red:       #da212c;
+  --modus-wc-color-red-dark:  #ab1f26;
+
+  /* Green progression (success) */
+  --modus-wc-color-green-pale:  #e0eccf;
+  --modus-wc-color-green-light: #4ea646;
+  --modus-wc-color-green:       #1e8a44;
+  --modus-wc-color-green-dark:  #006638;
+
+  /* In-field validation (used on inputs) */
+  --modus-wc-in-field-success-dark-bg:  #00fe00;
+  --modus-wc-in-field-success-light-bg: #00d22f;
+  --modus-wc-in-field-warning:          #ff8b00;
+  --modus-wc-in-field-error:            #da212c;
+  --modus-wc-in-field-info:             #019aeb;
+  --modus-wc-in-field-avoidance:        #df4eb2;
+
+  /* ---------- Type ------------------------------------------------------- */
+  --modus-wc-font-family:
+    'Open Sans', 'Segoe UI', 'Noto Sans', 'San Francisco', 'Helvetica', 'Arial', sans-serif;
+  --modus-wc-font-family-mono:
+    'SFMono-Regular', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+
+  --modus-wc-font-size-2xs:  0.5rem;    /*  8px */
+  --modus-wc-font-size-xs:   0.625rem;  /* 10px */
+  --modus-wc-font-size-sm:   0.75rem;   /* 12px */
+  --modus-wc-font-size-md:   0.875rem;  /* 14px  — default body */
+  --modus-wc-font-size-lg:   1rem;      /* 16px */
+  --modus-wc-font-size-xl:   1.125rem;  /* 18px */
+  --modus-wc-font-size-2xl:  1.25rem;   /* 20px */
+  --modus-wc-font-size-3xl:  1.5rem;    /* 24px */
+  --modus-wc-font-size-4xl:  1.875rem;  /* 30px */
+
+  --modus-wc-font-weight-light:    300;
+  --modus-wc-font-weight-normal:   400;
+  --modus-wc-font-weight-semibold: 600;
+  --modus-wc-font-weight-bold:     700;
+
+  --modus-wc-line-height-xs: 0.5rem;
+  --modus-wc-line-height-sm: 1rem;
+  --modus-wc-line-height-md: 1.5rem;
+  --modus-wc-line-height-lg: 2rem;
+  --modus-wc-line-height-xl: 3rem;
+  --modus-wc-line-height-h6: 1.125rem; /* 18px */
+  --modus-wc-line-height-h3: 1.6875rem;/* 27px */
+  --modus-wc-line-height-h2: 1.875rem; /* 30px */
+  --modus-wc-line-height-h1: 2.25rem;  /* 36px */
+  --modus-wc-line-height-h0: 2.75rem;  /* 44px */
+
+  /* ---------- Spacing --------------------------------------------------- */
+  --modus-wc-spacing-2xs: 0.125rem; /*  2px */
+  --modus-wc-spacing-xs:  0.25rem;  /*  4px */
+  --modus-wc-spacing-sm:  0.5rem;   /*  8px */
+  --modus-wc-spacing-md:  0.75rem;  /* 12px */
+  --modus-wc-spacing-lg:  1rem;     /* 16px */
+  --modus-wc-spacing-xl:  1.5rem;   /* 24px */
+  --modus-wc-spacing-2xl: 2rem;     /* 32px */
+  --modus-wc-spacing-3xl: 3rem;     /* 48px */
+
+  /* ---------- Sizes (control heights) ---------------------------------- */
+  --modus-wc-size-xxs: 0.75rem;
+  --modus-wc-size-xs:  1.5rem;
+  --modus-wc-size-sm:  2rem;
+  --modus-wc-size-md:  2.5rem;
+  --modus-wc-size-lg:  3rem;
+  --modus-wc-size-xl:  3.5rem;
+  --modus-wc-size-xxl: 4.5rem;
+  --modus-wc-input-height-sm: 1.5rem;
+  --modus-wc-input-height-md: 2rem;
+  --modus-wc-input-height-lg: 3rem;
+
+  /* ---------- Borders ---------------------------------------------------- */
+  --modus-wc-border-width-xs:  1px;
+  --modus-wc-border-width-sm:  2px;
+  --modus-wc-border-width-md:  3px;
+  --modus-wc-border-width-lg:  4px;
+  --modus-wc-border-width-xl:  8px;
+  --modus-wc-border-width-2xl: 12px;
+  --modus-wc-border-width-3xl: 24px;
+
+  --modus-wc-border-radius-sm:      2px;
+  --modus-wc-border-radius-md:      4px;
+  --modus-wc-border-radius-lg:      8px;
+  --modus-wc-border-radius-xl:     12px;
+  --modus-wc-border-radius-2xl:    16px;
+  --modus-wc-border-radius-3xl:    24px;
+  --modus-wc-border-radius-rounded: 1000px;
+
+  --modus-wc-border-radius-badge: var(--modus-wc-border-radius-md);
+  --modus-wc-border-radius-btn:   var(--modus-wc-border-radius-lg);
+  --modus-wc-border-radius-box:   var(--modus-wc-border-radius-2xl);
+  --modus-wc-border-radius-tab:   var(--modus-wc-border-radius-lg);
+  --modus-wc-border-radius-input: var(--modus-wc-border-radius-lg);
+  --modus-wc-border-radius-table: var(--modus-wc-border-radius-2xl);
+  --modus-wc-border-radius-chip:  var(--modus-wc-border-radius-lg);
+  --modus-wc-border-radius-alert: var(--modus-wc-border-radius-md);
+
+  /* ---------- Elevation (not in source — inferred from components) ------ */
+  --modus-wc-shadow-xs:  0 1px 2px rgba(0,0,0,0.06);
+  --modus-wc-shadow-sm:  0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --modus-wc-shadow-md:  0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
+  --modus-wc-shadow-lg:  0 10px 15px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.04);
+  --modus-wc-shadow-xl:  0 20px 25px rgba(0,0,0,0.10), 0 8px 10px rgba(0,0,0,0.04);
+
+  --modus-wc-opacity-overlay: 0.6;
+
+  /* ---------- Motion ---------------------------------------------------- */
+  --modus-wc-motion-duration-fast: 150ms;
+  --modus-wc-motion-duration-base: 300ms;
+  --modus-wc-motion-duration-slow: 500ms;
+  --modus-wc-motion-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---------- Semantic base (light defaults) ---------------------------- */
+  --modus-wc-color-base-page:    var(--modus-wc-color-white);
+  --modus-wc-color-base-100:     var(--modus-wc-color-gray-01);
+  --modus-wc-color-base-200:     var(--modus-wc-color-gray-02);
+  --modus-wc-color-base-300:     var(--modus-wc-color-gray-1);
+  --modus-wc-color-base-content: var(--modus-wc-color-gray-10);
+  --modus-wc-color-base-content-low-contrast:  var(--modus-wc-color-gray-8);
+  --modus-wc-color-base-content-high-contrast: var(--modus-wc-color-black);
+  --modus-wc-color-base-inverted:              var(--modus-wc-color-gray-10);
+
+  /* Semantic role colors (overridden by theme) */
+  --modus-wc-color-primary:           var(--modus-wc-color-trimble-blue);
+  --modus-wc-color-primary-content:   var(--modus-wc-color-white);
+  --modus-wc-color-primary-pale:      var(--modus-wc-color-blue-pale);
+  --modus-wc-color-secondary:         var(--modus-wc-color-yellow);
+  --modus-wc-color-secondary-content: var(--modus-wc-color-black);
+  --modus-wc-color-secondary-pale:    var(--modus-wc-color-yellow-pale);
+  --modus-wc-color-accent:            var(--modus-wc-color-gray-6);
+  --modus-wc-color-accent-content:    var(--modus-wc-color-white);
+  --modus-wc-color-info:              var(--modus-wc-color-blue-dark);
+  --modus-wc-color-info-content:      var(--modus-wc-color-white);
+  --modus-wc-color-info-pale:         var(--modus-wc-color-blue-pale);
+  --modus-wc-color-success:           var(--modus-wc-color-green);
+  --modus-wc-color-success-content:   var(--modus-wc-color-white);
+  --modus-wc-color-success-pale:      var(--modus-wc-color-green-pale);
+  --modus-wc-color-warning:           var(--modus-wc-color-yellow-dark);
+  --modus-wc-color-warning-content:   var(--modus-wc-color-black);
+  --modus-wc-color-warning-pale:      var(--modus-wc-color-yellow-pale);
+  --modus-wc-color-error:             var(--modus-wc-color-red);
+  --modus-wc-color-error-content:     var(--modus-wc-color-white);
+  --modus-wc-color-error-pale:        var(--modus-wc-color-red-pale);
+}
+
+/* =========================================================================
+   2. THEME OVERRIDES — apply with data-theme attribute on <html> or root
+   ========================================================================= */
+[data-theme='modus-modern-light'] {
+  color-scheme: light;
+  --modus-wc-color-base-page:    var(--modus-wc-color-white);
+  --modus-wc-color-base-100:     var(--modus-wc-color-gray-01);
+  --modus-wc-color-base-200:     var(--modus-wc-color-gray-02);
+  --modus-wc-color-base-300:     var(--modus-wc-color-gray-1);
+  --modus-wc-color-base-content: var(--modus-wc-color-gray-10);
+  --modus-wc-color-primary:         var(--modus-wc-color-trimble-blue);
+  --modus-wc-color-primary-content: var(--modus-wc-color-white);
+}
+[data-theme='modus-modern-dark'] {
+  color-scheme: dark;
+  --modus-wc-color-base-page:    var(--modus-wc-color-gray-10);
+  --modus-wc-color-base-100:     var(--modus-wc-color-gray-9);
+  --modus-wc-color-base-200:     var(--modus-wc-color-gray-8);
+  --modus-wc-color-base-300:     var(--modus-wc-color-trimble-gray);
+  --modus-wc-color-base-content: var(--modus-wc-color-gray-1);
+  --modus-wc-color-primary:         var(--modus-wc-color-highlight-blue);
+  --modus-wc-color-primary-content: var(--modus-wc-color-black);
+  --modus-wc-color-secondary:       var(--modus-wc-color-yellow-light);
+  --modus-wc-color-warning:         var(--modus-wc-color-yellow-light);
+  --modus-wc-color-error:           var(--modus-wc-color-red-light);
+  --modus-wc-color-success:         var(--modus-wc-color-green-light);
+}
+[data-theme='modus-classic-light'] {
+  color-scheme: light;
+  --modus-wc-color-base-page:    var(--modus-wc-color-white);
+  --modus-wc-color-base-100:     var(--modus-wc-color-gray-light);
+  --modus-wc-color-base-200:     var(--modus-wc-color-gray-1);
+  --modus-wc-color-base-300:     var(--modus-wc-color-gray-2);
+  --modus-wc-color-base-content: var(--modus-wc-color-gray-10);
+  --modus-wc-color-warning:      var(--modus-wc-color-yellow);
+}
+[data-theme='modus-classic-dark'] {
+  color-scheme: dark;
+  --modus-wc-color-base-page:    var(--modus-wc-color-black);
+  --modus-wc-color-base-100:     var(--modus-wc-color-trimble-gray);
+  --modus-wc-color-base-200:     var(--modus-wc-color-gray-8);
+  --modus-wc-color-base-300:     var(--modus-wc-color-gray-9);
+  --modus-wc-color-base-content: var(--modus-wc-color-gray-1);
+}
+
+/* =========================================================================
+   3. SEMANTIC TYPE — use these in products, not raw sizes
+   Modus uses a type scale from h0 (hero) down to h6 (tiny section label).
+   ========================================================================= */
+.mw-h0, h1.mw-h0 {
+  font-family: var(--modus-wc-font-family);
+  font-size: var(--modus-wc-font-size-4xl);      /* 30px */
+  line-height: var(--modus-wc-line-height-h0);   /* 44px */
+  font-weight: var(--modus-wc-font-weight-semibold);
+  letter-spacing: -0.01em;
+  color: var(--modus-wc-color-base-content);
+}
+.mw-h1, h1 {
+  font-family: var(--modus-wc-font-family);
+  font-size: var(--modus-wc-font-size-3xl);      /* 24px */
+  line-height: var(--modus-wc-line-height-h1);   /* 36px */
+  font-weight: var(--modus-wc-font-weight-semibold);
+  color: var(--modus-wc-color-base-content);
+}
+.mw-h2, h2 {
+  font-family: var(--modus-wc-font-family);
+  font-size: var(--modus-wc-font-size-2xl);      /* 20px */
+  line-height: var(--modus-wc-line-height-h2);   /* 30px */
+  font-weight: var(--modus-wc-font-weight-semibold);
+  color: var(--modus-wc-color-base-content);
+}
+.mw-h3, h3 {
+  font-family: var(--modus-wc-font-family);
+  font-size: var(--modus-wc-font-size-xl);       /* 18px */
+  line-height: var(--modus-wc-line-height-h3);   /* 27px */
+  font-weight: var(--modus-wc-font-weight-semibold);
+  color: var(--modus-wc-color-base-content);
+}
+.mw-h4, h4 {
+  font-family: var(--modus-wc-font-family);
+  font-size: var(--modus-wc-font-size-lg);       /* 16px */
+  line-height: var(--modus-wc-line-height-md);
+  font-weight: var(--modus-wc-font-weight-semibold);
+  color: var(--modus-wc-color-base-content);
+}
+.mw-h5, h5 {
+  font-family: var(--modus-wc-font-family);
+  font-size: var(--modus-wc-font-size-md);       /* 14px */
+  line-height: var(--modus-wc-line-height-md);
+  font-weight: var(--modus-wc-font-weight-semibold);
+  color: var(--modus-wc-color-base-content);
+}
+.mw-h6, h6 {
+  font-family: var(--modus-wc-font-family);
+  font-size: var(--modus-wc-font-size-sm);       /* 12px */
+  line-height: var(--modus-wc-line-height-h6);
+  font-weight: var(--modus-wc-font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--modus-wc-color-base-content);
+}
+.mw-body, p {
+  font-family: var(--modus-wc-font-family);
+  font-size: var(--modus-wc-font-size-md);       /* 14px body default */
+  line-height: var(--modus-wc-line-height-md);
+  font-weight: var(--modus-wc-font-weight-normal);
+  color: var(--modus-wc-color-base-content);
+}
+.mw-body-sm   { font-size: var(--modus-wc-font-size-sm); line-height: var(--modus-wc-line-height-md); }
+.mw-body-lg   { font-size: var(--modus-wc-font-size-lg); line-height: var(--modus-wc-line-height-md); }
+.mw-caption   { font-size: var(--modus-wc-font-size-xs); line-height: var(--modus-wc-line-height-sm); color: var(--modus-wc-color-base-content-low-contrast); }
+.mw-overline  { font-size: var(--modus-wc-font-size-sm); font-weight: var(--modus-wc-font-weight-semibold); text-transform: uppercase; letter-spacing: 0.08em; color: var(--modus-wc-color-base-content-low-contrast); }
+.mw-code, code, kbd, pre {
+  font-family: var(--modus-wc-font-family-mono);
+  font-size: var(--modus-wc-font-size-sm);
+  background: var(--modus-wc-color-base-100);
+  padding: 0.1em 0.35em;
+  border-radius: var(--modus-wc-border-radius-sm);
+}
+
+/* Foreground helpers */
+.mw-fg-1 { color: var(--modus-wc-color-base-content); }
+.mw-fg-2 { color: var(--modus-wc-color-base-content-low-contrast); }
+.mw-fg-3 { color: var(--modus-wc-color-gray-5); }
+.mw-fg-primary { color: var(--modus-wc-color-primary); }
+.mw-fg-error   { color: var(--modus-wc-color-error); }
+.mw-fg-success { color: var(--modus-wc-color-success); }
+.mw-fg-warning { color: var(--modus-wc-color-warning); }
+
+/* Global reset pieces to match Modus global.css */
+*, *::before, *::after { box-sizing: border-box; font-family: var(--modus-wc-font-family), sans-serif; }
+body { background-color: var(--modus-wc-color-base-page); color: var(--modus-wc-color-base-content); margin: 0; }
